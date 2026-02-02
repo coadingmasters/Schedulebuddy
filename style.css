@@ -18,6 +18,13 @@ body {
     font-family: var(--body-font);
     color: var(--dark-text);
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
 }
 
 ul {
@@ -779,6 +786,7 @@ a {
     height: 100%;
     object-fit: cover;
     filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.1));
+    -webkit-filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.1));
 }
 
 .learning-content-right {
@@ -869,6 +877,11 @@ a {
 @media (max-width: 767px) {
     .learning-growth {
         padding: 1.5rem 1rem;
+        background-color: #FCF8D6;
+        /* padding: 1.5rem 2rem; */
+        overflow: hidden;
+        margin-left: 0px;
+        margin-right: 0px;
     }
 
     .learning-growth-container {
@@ -880,7 +893,7 @@ a {
     .learning-image-left {
         order: 1;
         /* overflow: hidden; */
-        max-width: 200px;
+        max-width: 255px;
         margin: 0 auto;
     }
 
@@ -921,7 +934,7 @@ a {
     .learning-image-right {
         order: 1;
         /* overflow: hidden; */
-        max-width: 200px;
+        max-width: 255px;
         margin: 0 auto;
     }
 
@@ -941,7 +954,12 @@ a {
 /* Mobile (480px and below) */
 @media (max-width: 480px) {
     .learning-growth {
-        padding: 1.25rem 0.75rem;
+        padding: 1.5rem 1rem;
+        background-color: #FCF8D6;
+        /* padding: 1.5rem 2rem; */
+
+        margin-left: 0px;
+        margin-right: 0px;
     }
 
     .learning-growth-container {
@@ -1076,7 +1094,7 @@ a {
 
     .learning-image-right {
         /* overflow: hidden; */
-        max-width: 200px;
+        max-width: 255px;
         margin: 0 auto;
     }
 
@@ -1097,7 +1115,7 @@ a {
     .learning-image-right {
         order: 1;
         /* overflow: hidden; */
-        max-width: 200px;
+        max-width: 255px;
         margin: 0 auto;
     }
 
@@ -1820,14 +1838,16 @@ a {
 .unique-feature-icon {
     width: 60px;
     height: 60px;
-    background-color: transparent;
-
+    background: rgba(229, 231, 235, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    box-shadow: 0px 4px 4px 0px #dddddd96;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1), inset 0px 2px 4px rgba(255, 255, 255, 0.7);
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -1835,8 +1855,8 @@ a {
 }
 
 .unique-feature-icon img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
 }
 
@@ -3434,12 +3454,12 @@ a {
 /* Small Mobile - Below 480px */
 @media (max-width: 480px) {
     .lifestyle-section {
-        padding: 1.5rem 1rem;
+        /* padding: 1.5rem 1rem; */
     }
 
     .lifestyle-container {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        /* gap: 1.5rem; */
     }
 
     .food-image {
@@ -3788,7 +3808,7 @@ a {
     display: flex;
     gap: 1.5rem;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .store-button {
@@ -3942,7 +3962,7 @@ a {
     }
 
     .app-image {
-        max-width: 240px;
+        max-width: 300px;
     }
 
     .app-cta-content h2 {
@@ -3963,7 +3983,7 @@ a {
 
     .app-store-buttons {
         gap: 0.8rem;
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
     }
 
@@ -4382,27 +4402,55 @@ a {
 @media (max-width: 1024px) {
     .footer-container {
         grid-template-columns: 1fr 1fr;
-        gap: 3rem;
+        gap: 3rem 2rem;
         padding: 0 1.5rem 2.5rem 1.5rem;
     }
 
     .footer-middle {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        display: contents;
     }
 
     .footer-left {
-        grid-column: 1 / -1;
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .footer-middle .footer-column:first-child {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .footer-middle .footer-column:last-child {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .footer-right {
+        grid-column: 2;
+        grid-row: 2;
     }
 
     .footer-bottom-container {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
     }
 
     .footer-policies {
-        gap: 1.5rem;
+        display: flex;
+        gap: 0;
         width: 100%;
+        justify-content: space-between;
+    }
+
+    .footer-policies a:first-child {
+        margin-right: auto;
+    }
+
+    .footer-policies a:nth-child(2),
+    .footer-policies a:nth-child(3) {
+        margin-left: 1.5rem;
     }
 }
 
@@ -4413,14 +4461,33 @@ a {
     }
 
     .footer-container {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem 1.5rem;
         padding: 0 1.5rem 2rem 1.5rem;
     }
 
     .footer-middle {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+        display: contents;
+    }
+
+    .footer-left {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+    .footer-middle .footer-column:first-child {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .footer-middle .footer-column:last-child {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .footer-right {
+        grid-column: 1 / -1;
+        grid-row: 3;
     }
 
     .footer-column {
@@ -4493,9 +4560,10 @@ a {
     }
 
     .footer-bottom-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
     }
 
     .footer-copyright {
@@ -4503,9 +4571,20 @@ a {
     }
 
     .footer-policies {
-        flex-direction: column;
-        gap: 1rem;
+        display: flex;
+        flex-direction: row;
+        gap: 0;
         width: 100%;
+        justify-content: space-between;
+    }
+
+    .footer-policies a:first-child {
+        margin-right: auto;
+    }
+
+    .footer-policies a:nth-child(2),
+    .footer-policies a:nth-child(3) {
+        margin-left: 1rem;
     }
 
     .footer-policies a {
@@ -4610,5 +4689,765 @@ a {
 
     .footer-policies a {
         font-size: 0.8rem;
+    }
+}
+
+/* ================== ABOUT US PAGE STYLES ================== */
+
+/* About Us Hero Section */
+.about-us-hero {
+    background-image: url('images/Rectangle\ 34624275.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 2rem 3rem 2rem;
+    position: relative;
+}
+
+.about-us-hero-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.about-us-hero h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--light-text);
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+}
+
+/* About Description Section */
+.about-description {
+    padding: 5rem 2rem;
+    background-color: #FFFFFF;
+}
+
+.about-description-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-description h2 {
+    font-size: 56px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.about-description-text {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.about-description-text p {
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 400;
+    color: #000000;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.about-description-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* About Preview Section */
+.about-preview {
+    padding: 0 2rem 5rem 2rem;
+    background-color: #FFFFFF;
+}
+
+.about-preview-container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.about-preview-image {
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.about-preview-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.about-preview-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.about-preview-play:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.about-preview-play img {
+    width: 100%;
+    height: 100%;
+}
+
+/* About Feature Text Section */
+.about-feature-text {
+    padding: 5rem 2rem;
+    background-color: #FFFFFF;
+}
+
+.about-feature-text-container {
+    max-width: 963px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.about-feature-text p {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 121%;
+    color: #000000;
+    margin: 0;
+    text-align: left;
+    max-width: 1100px;
+}
+
+/* About App Showcase Section */
+.about-app-showcase {
+    padding: 0;
+    background-color: #FFFFFF;
+}
+
+.about-app-showcase-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.about-app-showcase-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* About Fun Adventures Section */
+.about-fun-adventures {
+    padding: 5rem 2rem;
+    background-color: #FFFFFF;
+}
+
+.about-fun-adventures-container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.about-fun-adventures h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.2;
+    color: #000000;
+    margin: 0 0 1.5rem 0;
+    text-align: left;
+}
+
+.about-fun-adventures p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4B5563;
+    margin: 0 0 3rem 0;
+    text-align: left;
+    width: 870px;
+}
+
+.about-fun-adventures-image {
+    width: 100%;
+    margin: 0;
+}
+
+.about-fun-adventures-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+}
+
+/* About Hero Section */
+.about-hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #26a89a 100%);
+    color: var(--light-text);
+    padding: 6rem 2rem 4rem 2rem;
+    text-align: center;
+}
+
+.about-hero-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.about-hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+}
+
+/* Our Story Section */
+.about-story {
+    padding: 5rem 2rem;
+    background-color: #FFFFFF;
+}
+
+.about-story-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-story-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 1.5rem;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.about-story-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #4B5563;
+    margin-bottom: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.about-story-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Our Values Section */
+.about-values {
+    padding: 5rem 2rem;
+    background-color: #F9FAFB;
+}
+
+.about-values-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-values h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 1rem;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.about-values-subtitle {
+    font-size: 1.1rem;
+    color: #4B5563;
+    margin-bottom: 3rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.value-card {
+    background-color: #FFFFFF;
+    padding: 2.5rem 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.value-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(48, 192, 178, 0.1), rgba(48, 192, 178, 0.05));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+    color: var(--primary-color);
+}
+
+.value-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 1rem;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.value-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #4B5563;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Our Team Section */
+.about-team {
+    padding: 5rem 2rem;
+    background-color: #FFFFFF;
+}
+
+.about-team-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-team h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 1rem;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.about-team-subtitle {
+    font-size: 1.1rem;
+    color: #4B5563;
+    margin-bottom: 3rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.team-member {
+    text-align: center;
+}
+
+.team-member-image {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 1.5rem auto;
+    border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--primary-color), #26a89a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px rgba(48, 192, 178, 0.2);
+}
+
+.team-member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-member h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 0.5rem;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.team-role {
+    font-size: 0.95rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.team-bio {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #4B5563;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ================== ABOUT US RESPONSIVE - TABLET ================== */
+@media (max-width: 1024px) {
+    .about-us-hero {
+        min-height: 350px;
+        padding: 0 1.5rem 2.5rem 1.5rem;
+    }
+
+    .about-us-hero h1 {
+        font-size: 3rem;
+    }
+
+    .about-description {
+        padding: 3.5rem 1.5rem;
+    }
+
+    .about-description h2 {
+        font-size: 1.75rem;
+    }
+
+    .about-description-text p {
+        font-size: 0.95rem;
+    }
+
+    .about-preview {
+        padding: 0 0 3.5rem 0;
+    }
+
+    .about-preview-container {
+        max-width: 100%;
+    }
+
+    .about-preview-image {
+        border-radius: 0;
+    }
+
+    .about-preview-play {
+        width: 70px;
+        height: 70px;
+    }
+
+    .about-feature-text {
+        padding: 3.5rem 1.5rem;
+    }
+
+    .about-feature-text-container {
+        max-width: 100%;
+        padding: 0 2rem;
+    }
+
+    .about-feature-text p {
+        font-size: 28px;
+        max-width: 100%;
+    }
+
+    .about-fun-adventures {
+        padding: 3.5rem 1.5rem;
+    }
+
+    .about-fun-adventures h2 {
+        font-size: 28px;
+    }
+
+    .about-fun-adventures p {
+        font-size: 15px;
+    }
+
+    .about-fun-adventures-image img {
+        border-radius: 12px;
+    }
+
+    .about-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .about-hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .about-story-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .about-story-image {
+        text-align: center;
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* ================== ABOUT US RESPONSIVE - MOBILE ================== */
+@media (max-width: 768px) {
+    .about-us-hero {
+        min-height: 300px;
+        padding: 0 1.5rem 2rem 1.5rem;
+    }
+
+    .about-us-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .about-description {
+        padding: 3rem 1.5rem;
+    }
+
+    .about-description h2 {
+        font-size: 1.5rem;
+    }
+
+    .about-description-text {
+        max-width: 100%;
+    }
+
+    .about-description-text p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .about-preview {
+        padding: 0 0 3rem 0;
+    }
+
+    .about-preview-container {
+        max-width: 100%;
+    }
+
+    .about-preview-image {
+        border-radius: 0;
+    }
+
+    .about-preview-play {
+        width: 60px;
+        height: 60px;
+    }
+
+    .about-feature-text {
+        padding: 3rem 1.5rem;
+    }
+
+    .about-feature-text-container {
+        max-width: 100%;
+        padding: 0 1.5rem;
+    }
+
+    .about-feature-text p {
+        font-size: 22px;
+        max-width: 100%;
+    }
+
+    .about-fun-adventures {
+        padding: 3rem 0;
+    }
+
+    .about-fun-adventures-container {
+        padding: 0 1.5rem;
+    }
+
+    .about-fun-adventures h2 {
+        font-size: 24px;
+    }
+
+    .about-fun-adventures p {
+        font-size: 14px;
+        margin-bottom: 2rem;
+    }
+
+    .about-fun-adventures-image {
+        margin: 0 -1.5rem;
+    }
+
+    .about-fun-adventures-image img {
+        border-radius: 0;
+    }
+
+    .about-hero {
+        padding: 4rem 1.5rem 3rem 1.5rem;
+    }
+
+    .about-hero h1 {
+        font-size: 2rem;
+    }
+
+    .about-hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .about-story {
+        padding: 3rem 1.5rem;
+    }
+
+    .about-story-content h2 {
+        font-size: 2rem;
+    }
+
+    .about-story-content p {
+        font-size: 1rem;
+    }
+
+    .about-values {
+        padding: 3rem 1.5rem;
+    }
+
+    .about-values h2 {
+        font-size: 2rem;
+    }
+
+    .about-values-subtitle {
+        font-size: 1rem;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .about-team {
+        padding: 3rem 1.5rem;
+    }
+
+    .about-team h2 {
+        font-size: 2rem;
+    }
+
+    .about-team-subtitle {
+        font-size: 1rem;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .team-member-image {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* ================== ABOUT US RESPONSIVE - SMALL MOBILE ================== */
+@media (max-width: 480px) {
+    .about-us-hero {
+        min-height: 250px;
+        padding: 0 1rem 1.5rem 1rem;
+    }
+
+    .about-us-hero h1 {
+        font-size: 2rem;
+    }
+
+    .about-description {
+        padding: 2.5rem 1rem;
+    }
+
+    .about-description h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .about-description-text p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+        margin-bottom: 1.2rem;
+    }
+
+    .about-preview {
+        padding: 0 0 2.5rem 0;
+    }
+
+    .about-preview-play {
+        width: 50px;
+        height: 50px;
+    }
+
+    .about-feature-text {
+        padding: 2.5rem 1rem;
+    }
+
+    .about-feature-text-container {
+        padding: 0 1rem;
+    }
+
+    .about-feature-text p {
+        font-size: 18px;
+        max-width: 100%;
+    }
+
+    .about-fun-adventures {
+        padding: 2.5rem 0;
+    }
+
+    .about-fun-adventures-container {
+        padding: 0 1rem;
+    }
+
+    .about-fun-adventures h2 {
+        font-size: 20px;
+    }
+
+    .about-fun-adventures p {
+        font-size: 13px;
+        margin-bottom: 1.5rem;
+    }
+
+    .about-fun-adventures-image {
+        margin: 0 -1rem;
+    }
+
+    .about-fun-adventures-image img {
+        border-radius: 0;
+    }
+
+    .about-hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .about-story-content h2,
+    .about-values h2,
+    .about-team h2 {
+        font-size: 1.75rem;
+    }
+
+    .value-card {
+        padding: 2rem 1rem;
+    }
+
+    .team-member-image {
+        width: 120px;
+        height: 120px;
     }
 }
